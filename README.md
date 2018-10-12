@@ -1,5 +1,5 @@
 # ValueBETS SYSTEM
-Manage member user & login System for CodeIgniter. It's very small, secure (with notification to review activity log in, will Sent via Your Email) and very fast login system, :+1: with bootstrap 3 & Custom Theme.
+Bets System for CodeIgniter. It's very small, secure (with notification to review activity log in, will Sent via Your Email) and very fast login system using bootstrap
 
 Created By me [Hamad Hasan](http://seersol.com)
 
