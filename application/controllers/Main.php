@@ -37,11 +37,9 @@ class Main extends CI_Controller {
         if(empty($this->session->userdata['email'])){
             redirect(site_url().'main/login/');
         }else{
-            $this->load->view('header', $data);
-            $this->load->view('navbar', $data);
-            $this->load->view('container');
-            $this->load->view('index', $data);
-            $this->load->view('footer');
+            $this->load->view('template/header', $data);
+            $this->load->view('dashboard', $data);
+            $this->load->view('template/footer');
         }
 
 	}
@@ -419,6 +417,60 @@ class Main extends CI_Controller {
 	    }
     }
 
+ /**
+     * Validate the password
+     *
+     * @param string $password
+     *
+     * @return bool
+     */
+    public function valid_password($password = '')
+    {
+        $password = trim($password);
+        $regex_lowercase = '/[a-z]/';
+        $regex_uppercase = '/[A-Z]/';
+        $regex_number = '/[0-9]/';
+        $regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+        if (empty($password))
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field is required.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_lowercase, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must be at least one lowercase letter.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_uppercase, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must be at least one uppercase letter.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_number, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must have at least one number.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_special, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+            return FALSE;
+        }
+        if (strlen($password) < 5)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must be at least 5 characters in length.');
+            return FALSE;
+        }
+        if (strlen($password) > 32)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field cannot exceed 32 characters in length.');
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+
+
     //register new user from frontend
     public function register()
     {
@@ -428,8 +480,8 @@ class Main extends CI_Controller {
         $this->form_validation->set_rules('firstname', 'First Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|password_match');
+        $this->form_validation->set_rules('password', 'Password', 'required|xss_clean|callback_valid_password');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
 
         
         $result = $this->user_model->getAllSettings();
@@ -446,8 +498,11 @@ class Main extends CI_Controller {
                 $this->session->set_flashdata('flash_message', 'User email already exists');
                 redirect(site_url().'main/register');
             }else{
+                $this->load->library('password');
                 $post = $this->input->post(NULL, TRUE);
                 $clean = $this->security->xss_clean($post);
+                $hashed = $this->password->create_hash($clean['password']);
+                $clean['password'] = $hashed;
 
                 if($data['recaptcha'] == 'yes'){
                     //recaptcha
@@ -513,7 +568,9 @@ class Main extends CI_Controller {
                     $this->email->subject('Set Password Login');
                     $this->email->message($message);
                     $this->email->set_mailtype("html");
-    
+
+                    redirect(site_url().'main/successregister/');
+                    die;
                     //Sending mail
                     if($this->email->send()){
                         redirect(site_url().'main/successregister/');

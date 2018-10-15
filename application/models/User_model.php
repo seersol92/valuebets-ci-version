@@ -21,6 +21,7 @@ class User_model extends CI_Model {
                 'first_name'=>$d['firstname'],
                 'last_name'=>$d['lastname'],
                 'email'=>$d['email'],
+                'password' =>$d['password'],
                 'role'=>$this->roles[0], 
                 'status'=>$this->status[0],
                 'banned_users'=>$this->banned_users[0]
