@@ -25,6 +25,14 @@
       <?php echo form_input(array('name'=>'email', 'id'=> 'email', 'placeholder'=>'Email', 'class'=>'form-control', 'value'=> set_value('email'))); ?>
       <?php echo form_error('email');?>
     </div>
+	 <div class="form-group">
+      <?php echo form_input(array('name'=>'password', 'id'=> 'password', 'type' =>'password', 'placeholder'=>'Password', 'class'=>'form-control', 'value'=> set_value('email'))); ?>
+      <?php echo form_error('password');?>
+    </div>
+	 <div class="form-group">
+      <?php echo form_input(array('name'=>'confirm_password', 'type' =>'password' ,'id'=> 'c_password', 'placeholder'=>'Confirm Password', 'class'=>'form-control', 'value'=> set_value('email'))); ?>
+      <?php echo form_error('confirm_password');?>
+    </div>
     <?php if($recaptcha == 'yes'){ ?>
     <div style="text-align:center;" class="form-group">
         <div style="display: inline-block;"><?php echo $this->recaptcha->render(); ?></div>
