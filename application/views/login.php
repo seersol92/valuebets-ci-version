@@ -1,6 +1,14 @@
-<div class="col-lg-4 col-lg-offset-4">
-    <h2>Welcome Back!</h2>
-    <h5>Please Login.</h5>
+<div class="container" >
+      <div class="row justify-content-center" style="margin-top: 10vh;">
+        <div class="col-md-6">
+		<img src="<?=base_url()?>assets/img/logo-valuebets.svg" style="
+			width: 60%;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			padding: 50px;
+        ">  
+    <h5>Please Login</h5>
     <?php $fattr = array('class' => 'form-signin');
          echo form_open(site_url().'main/login/', $fattr); ?>
     <div class="form-group">
@@ -27,9 +35,10 @@
     </div>
     <?php
     }
-    echo form_submit(array('value'=>'Let me in!', 'class'=>'btn btn-lg btn-primary btn-block')); ?>
+    echo form_submit(array('value'=>'Login', 'class'=>'btn btn-lg btn-primary btn-block')); ?>
     <?php echo form_close(); ?>
     <br>
     <p>Not registered? <a href="<?php echo site_url();?>main/register">Register</a></p>
     <p>Forgot your password? <a href="<?php echo site_url();?>main/forgot">Forgot Password</a></p>
+</div>
 </div>

@@ -1,0 +1,7 @@
+/*
+ * Custom CSS
+ */
+
+ .recent-summary, .my-bet tr td:not(:first-child) {
+    font-weight: bold;
+  }

@@ -1,16 +1,26 @@
-    </div><!--row-->   
     
     <footer>
         <div class="col-md-12" style="text-align:center;">
             <hr>
-            Copyright - 2017 | <a href="http://abedputra.com">abedputra.com</a>
+            Copyright - <?=date('Y')?> | <a href="">VALUEBETS</a>
         </div>
     </footer>
-    </div><!-- /container -->  
     
     <!-- /Load Js -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url().'public/js/main.js' ?>"></script>
+   
+
+     <!-- Bootstrap and necessary plugins-->
+     <script src="<?=base_url()?>assets/vendors/jquery/js/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/vendors/popper.js/js/popper.min.js"></script>
+    <script src="<?=base_url()?>assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=base_url()?>assets/vendors/pace-progress/js/pace.min.js"></script>
+    <script src="<?=base_url()?>assets/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+    <script src="<?=base_url()?>assets/vendors/@coreui/coreui-pro/js/coreui.min.js"></script>
+    <!-- Common Scripts -->
+    <script src="<?=base_url()?>assets/js/vendor/sha512.js"></script>
+    <script src="<?=base_url()?>assets/js/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script src="<?=base_url()?>assets/js/app/bootstrap.php"></script>
+    <script src="<?=base_url()?>assets/js/app/common.js"></script>
+
     </body>
 </html>

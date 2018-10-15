@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/2018/October/value-bets-ci-app/'; //change link
+$config['base_url'] = 'http://localhost/2018/October/valuebets-ci-version/'; //change link
 
 /*
 |--------------------------------------------------------------------------

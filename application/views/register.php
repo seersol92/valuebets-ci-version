@@ -1,5 +1,13 @@
-<div class="col-lg-4 col-lg-offset-4">
-    <h2>Hello There</h2>
+<div class="container" >
+    <div class="row justify-content-center" style="margin-top: 10vh;">
+    <div class="col-md-6">
+    <img src="<?=base_url()?>assets/img/logo-valuebets.svg" style="
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      padding: 50px;
+    ">
     <h5>Please enter the required information below.</h5>     
     <?php 
         $fattr = array('class' => 'form-signin');
@@ -27,4 +35,7 @@
     <?php echo form_close(); ?>
     <br>
     <p>Registered? <a href="<?php echo site_url();?>main/login">Login</a></p>
+    </div>
+  </div>
+</div>
 </div>

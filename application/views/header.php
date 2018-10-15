@@ -20,9 +20,14 @@ $theme = $result->theme;
         
         <!--CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="<?php echo $theme; ?>">
-        <link rel="stylesheet" href="<?php echo base_url().'public/css/main.css' ?>">
+        <link href="<?=base_url()?>assets/vendors/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+        <!-- Main styles for this application-->
+        <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+
         
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
-    <body>
+    <body class="">
