@@ -428,6 +428,9 @@ class Main extends CI_Controller {
         $this->form_validation->set_rules('firstname', 'First Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|password_match');
+
         
         $result = $this->user_model->getAllSettings();
         $sTl = $result->site_title;
